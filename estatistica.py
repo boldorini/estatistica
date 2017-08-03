@@ -14,21 +14,18 @@ class estatistica(object):
 
 
     def media(self):
-        print soma([1,2,3])
-        #print (self.mtx)
-        #s = self.soma(self.mtx)
-        #media = soma(self.mtx) / len(self.mtx)
-        #return media
-        #return s
-
-
+        s = self.soma()
+        media = s / len(self.mtx)
+        return media
+        
+        
     def ordena(self):
         self.mtx.sort()
         return self.mtx
 
 
     def mediana(self):
-        matriz = ordena(self.mtx)
+        matriz = self.ordena()
         metade = len(matriz) / 2
         if (len(matriz) % 2 == 0):
             mediana = (matriz[metade - 1] + matriz[metade]) / 2
@@ -39,7 +36,7 @@ class estatistica(object):
 
     def variancia(self):
         soma = 0
-        m = media(self.mtx)
+        m = self.media()
         for num in self.mtx:
             soma += (m - num) ** 2
         variancia = soma / len(self.mtx)
@@ -47,5 +44,5 @@ class estatistica(object):
 
 
     def desvioPadrao(self):
-        desvioPadrao = sqrt(variancia(self.mtx))
+        desvioPadrao = sqrt(self.variancia())
         return desvioPadrao
